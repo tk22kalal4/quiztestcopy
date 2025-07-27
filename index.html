@@ -21,15 +21,43 @@
   .iframe-container { margin-top: 20px; }
   .iframe-container iframe { display: block; }
 
-  .nav-buttons {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 10px;
+  .dropdown-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
-  .nav-buttons button {
-    display: inline-block;
-    white-space: nowrap;
-    flex-shrink: 0;
+
+  .dropdown-toggle {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: 5px;
+    background: white;
+    border: 1px solid var(--shadow-gray);
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .dropdown-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .dropdown-menu button:hover {
+    background: var(--primary-blue);
+    color: white;
   }
 </style>
 <script>
@@ -41,24 +69,43 @@
     }
     document.querySelectorAll('.iframe-container').forEach(div => div.style.display = 'none');
     document.getElementById(id).style.display = 'block';
+    document.getElementById('dropdownMenu').style.display = 'none'; // collapse dropdown after selection
     window.scrollTo(0, 0);
   }
+
+  function toggleDropdown() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  }
+
+  document.addEventListener('click', function (event) {
+    const toggle = document.getElementById('dropdownToggle');
+    const menu = document.getElementById('dropdownMenu');
+    if (!toggle.contains(event.target) && !menu.contains(event.target)) {
+      menu.style.display = 'none';
+    }
+  });
 </script>
 </head>
 <body>
   <h1>Prep Rr Qb Anaesthesia - Combined Tests</h1>
-  <div class="nav-buttons">
-    <button onclick="showTest('test1')">Anaesthesia_Machine</button>
-    <button onclick="showTest('test2')">Cardiopulmonary_Cerebral_Resuscitation</button>
-    <button onclick="showTest('test3')">Difficult_airway_management___Ventilators</button>
-    <button onclick="showTest('test4')">Inhalational_Anaesthetics</button>
-    <button onclick="showTest('test5')">Intravenous_Anaesthetic_Agents</button>
-    <button onclick="showTest('test6')">Introduction_and_PAC</button>
-    <button onclick="showTest('test7')">Local_Anaesthetics</button>
-    <button onclick="showTest('test8')">Monitoring_during_anaesthesia</button>
-    <button onclick="showTest('test9')">Muscle_Relaxants</button>
-    <button onclick="showTest('test10')">Regional_Anaesthesia__Spinal__Epidural___Caudal</button>
+
+  <div class="dropdown-wrapper">
+    <button class="dropdown-toggle" id="dropdownToggle" onclick="toggleDropdown()">Select Test ▼</button>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <button onclick="showTest('test1')">Anaesthesia_Machine</button>
+      <button onclick="showTest('test2')">Cardiopulmonary_Cerebral_Resuscitation</button>
+      <button onclick="showTest('test3')">Difficult_airway_management___Ventilators</button>
+      <button onclick="showTest('test4')">Inhalational_Anaesthetics</button>
+      <button onclick="showTest('test5')">Intravenous_Anaesthetic_Agents</button>
+      <button onclick="showTest('test6')">Introduction_and_PAC</button>
+      <button onclick="showTest('test7')">Local_Anaesthetics</button>
+      <button onclick="showTest('test8')">Monitoring_during_anaesthesia</button>
+      <button onclick="showTest('test9')">Muscle_Relaxants</button>
+      <button onclick="showTest('test10')">Regional_Anaesthesia__Spinal__Epidural___Caudal</button>
+    </div>
   </div>
+
   <hr>
 
   
