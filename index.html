@@ -71,6 +71,15 @@
     background: #2c5281; /* light gray hover */
     color: #000000;
   }
+  /* This will make all images responsive with a maximum width */
+  img {
+    max-width: 100%;  /* Never wider than its container */
+    max-height: 400px; /* Set maximum height you prefer */
+    width: auto;      /* Maintain aspect ratio */
+    height: auto;     /* Maintain aspect ratio */
+    display: block;   /* Remove extra space below image */
+    margin: 10px auto; /* Center the image */
+  }
 </style>
 
 <script>
@@ -229,6 +238,24 @@
         font-weight: bold;
         margin-top: 1rem;
     }
+    img {
+        max-width: 100%;
+        max-height: 400px;
+        width: auto;
+        height: auto;
+        display: block;
+        margin: 10px auto;
+        border-radius: 4px;
+        object-fit: contain;
+    }
+    
+    /* For question images specifically */
+    .question_images img,
+    .explanation_images img {
+        max-height: 350px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
     /* Mobile-specific adjustments */
     @media (max-width: 640px) {
         .question-nav-btn, .result-nav-btn-grid {
@@ -258,6 +285,14 @@
         .result-nav-btn {
             width: 100%;
             text-align: center;
+        }
+    }
+      img {
+            max-height: 300px;
+        }
+        .question_images img,
+        .explanation_images img {
+            max-height: 250px;
         }
     }
     .video-placeholder {
