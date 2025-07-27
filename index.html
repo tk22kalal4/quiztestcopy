@@ -4,110 +4,46 @@
   <meta charset="UTF-8">
   <title>Prep RR Qb Anaesthesia - Combined Tests</title>
   <style>
-  body { font-family: Arial, sans-serif; padding: 20px; }
-  button {
-    margin: 5px;
-    padding: 10px 15px;
-    background: var(--bg-light);
-    border: 1px solid var(--shadow-gray);
-    border-radius: 4px;
-    cursor: pointer;
-    color: var(--heading-gray);
-  }
-  button:hover {
-    background: var(--primary-blue);
-    color: white;
-  }
-  .iframe-container { margin-top: 20px; }
-  .iframe-container iframe { display: block; }
-
-  .dropdown-wrapper {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-
-  .dropdown-toggle {
-    background: var(--primary-blue);
-    color: white;
-    border: none;
-  }
-
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    margin-top: 5px;
-    background: white;
-    border: 1px solid var(--shadow-gray);
-    border-radius: 4px;
-    max-height: 300px;
-    overflow-y: auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-
-  .dropdown-menu button {
-    display: block;
-    width: 100%;
-    text-align: left;
-    margin: 0;
-    border-radius: 0;
-  }
-
-  .dropdown-menu button:hover {
-    background: var(--primary-blue);
-    color: white;
-  }
-</style>
-<script>
-  function showTest(id) {
-    if (document.querySelector('.iframe-container:not([style*="display: none"])') !== document.getElementById(id)) {
-      if (!confirm("Are you sure you want to switch tests? Any unsaved progress may be lost.")) {
-        return;
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover { background: #ddd; }
+    .iframe-container { margin-top: 20px; }
+    .iframe-container iframe { display: block; }
+  </style>
+  <script>
+    function showTest(id) {
+      if (document.querySelector('.iframe-container:not([style*="display: none"])') !== document.getElementById(id)) {
+        if (!confirm("Are you sure you want to switch tests? Any unsaved progress may be lost.")) {
+          return;
+        }
       }
+      document.querySelectorAll('.iframe-container').forEach(div => div.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo(0, 0);
     }
-    document.querySelectorAll('.iframe-container').forEach(div => div.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
-    document.getElementById('dropdownMenu').style.display = 'none'; // collapse dropdown after selection
-    window.scrollTo(0, 0);
-  }
-
-  function toggleDropdown() {
-    const menu = document.getElementById('dropdownMenu');
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-  }
-
-  document.addEventListener('click', function (event) {
-    const toggle = document.getElementById('dropdownToggle');
-    const menu = document.getElementById('dropdownMenu');
-    if (!toggle.contains(event.target) && !menu.contains(event.target)) {
-      menu.style.display = 'none';
-    }
-  });
-</script>
+  </script>
 </head>
 <body>
   <h1>Prep Rr Qb Anaesthesia - Combined Tests</h1>
-
-  <div class="dropdown-wrapper">
-    <button class="dropdown-toggle" id="dropdownToggle" onclick="toggleDropdown()">Select Test ▼</button>
-    <div class="dropdown-menu" id="dropdownMenu">
-      <button onclick="showTest('test1')">Anaesthesia_Machine</button>
-      <button onclick="showTest('test2')">Cardiopulmonary_Cerebral_Resuscitation</button>
-      <button onclick="showTest('test3')">Difficult_airway_management___Ventilators</button>
-      <button onclick="showTest('test4')">Inhalational_Anaesthetics</button>
-      <button onclick="showTest('test5')">Intravenous_Anaesthetic_Agents</button>
-      <button onclick="showTest('test6')">Introduction_and_PAC</button>
-      <button onclick="showTest('test7')">Local_Anaesthetics</button>
-      <button onclick="showTest('test8')">Monitoring_during_anaesthesia</button>
-      <button onclick="showTest('test9')">Muscle_Relaxants</button>
-      <button onclick="showTest('test10')">Regional_Anaesthesia__Spinal__Epidural___Caudal</button>
-    </div>
-  </div>
-
+  <div class="nav-buttons"><button onclick="showTest('test1')">Anaesthesia_Machine</button>
+<button onclick="showTest('test2')">Cardiopulmonary_Cerebral_Resuscitation</button>
+<button onclick="showTest('test3')">Difficult_airway_management___Ventilators</button>
+<button onclick="showTest('test4')">Inhalational_Anaesthetics</button>
+<button onclick="showTest('test5')">Intravenous_Anaesthetic_Agents</button>
+<button onclick="showTest('test6')">Introduction_and_PAC</button>
+<button onclick="showTest('test7')">Local_Anaesthetics</button>
+<button onclick="showTest('test8')">Monitoring_during_anaesthesia</button>
+<button onclick="showTest('test9')">Muscle_Relaxants</button>
+<button onclick="showTest('test10')">Regional_Anaesthesia__Spinal__Epidural___Caudal</button>
+</div>
   <hr>
-
   
 <div id="test1" class="iframe-container" style="display:block;">
     <h2>Anaesthesia_Machine</h2>
@@ -122,6 +58,8 @@
 &lt;script src=&quot;https://cdn.jsdelivr.net/npm/hls.js@latest&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js&quot;&gt;&lt;/script&gt;
 &lt;style&gt;
+        /* Custom styles for enhanced aesthetics and responsiveness */
+        &lt;style&gt;
     /* Custom styles for enhanced aesthetics and responsiveness */
     .option-btn {
         transition: all 0.3s ease;
@@ -132,15 +70,15 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .option-btn.selected {
-        background-color: var(--primary-blue);
+        background-color: #2c5282;
         color: white;
     }
     .marked {
-        background-color: var(--secondary-yellow);
+        background-color: #f59e0b;
     }
     .progress-bar {
         transition: width 0.5s ease-in-out;
-        background: linear-gradient(to right, var(--primary-blue), var(--primary-green));
+        background: linear-gradient(to right, #2c5282, #16a34a);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         animation: pulse 2s infinite;
     }
@@ -165,14 +103,14 @@
         transform: scale(1.05);
     }
     .answered {
-        background-color: var(--primary-green);
+        background-color: #16a34a;
         color: white;
     }
     .unanswered {
-        background-color: var(--bg-light);
+        background-color: #e5e7eb;
     }
     .marked-nav {
-        border: 2px solid var(--secondary-yellow);
+        border: 2px solid #f59e0b;
     }
     .video-container, .audio-container {
         display: none;
@@ -200,22 +138,22 @@
         margin-top: 1rem;
     }
     .result-nav-btn {
-        background-color: var(--text-gray);
+        background-color: #374151;
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 8px;
         transition: all 0.2s ease;
     }
     .result-nav-btn:hover, .result-nav-btn:active {
-        background-color: var(--heading-gray);
+        background-color: #2d3748;
         transform: scale(1.05);
     }
     .result-nav-btn:disabled {
-        background-color: var(--bg-light);
+        background-color: #e5e7eb;
         cursor: not-allowed;
     }
     .error-message {
-        color: var(--error-red);
+        color: #ef4444;
         font-weight: bold;
         margin-top: 1rem;
     }
@@ -252,73 +190,81 @@
     }
     /* Dark mode styles */
     .dark .bg-gray-100 {
-        background-color: var(--deep-blue);
+        background-color: #1a365d;
     }
     .dark .bg-white {
-        background-color: var(--text-gray);
+        background-color: #374151;
     }
-    .dark .text-gray-700,
+    .dark .text-gray-700 {
+        color: #e5e7eb;
+    }
     .dark .text-gray-800 {
-        color: var(--bg-light);
+        color: #e5e7eb;
     }
     .dark .bg-gray-200 {
-        background-color: var(--subtext-gray);
+        background-color: #6b7280;
     }
     .dark .border {
-        border-color: var(--subtext-gray);
+        border-color: #6b7280;
     }
     .dark .bg-blue-500 {
-        background-color: var(--primary-blue);
+        background-color: #2c5282;
     }
     .dark .hover\:bg-blue-600:hover {
-        background-color: var(--deep-blue);
+        background-color: #1a365d;
     }
-    .dark .bg-yellow-300,
-    .dark .hover\:bg-yellow-400:hover {
-        background-color: var(--amber);
+    .dark .bg-yellow-300 {
+        background-color: #d97706;
         color: white;
     }
-    .dark .bg-green-500,
-    .dark .hover\:bg-green-600:hover {
-        background-color: var(--deep-green);
+    .dark .hover\:bg-yellow-400:hover {
+        background-color: #d97706;
     }
-    .dark .bg-gray-500,
+    .dark .bg-green-500 {
+        background-color: #15803d;
+    }
+    .dark .hover\:bg-green-600:hover {
+        background-color: #15803d;
+    }
+    .dark .bg-gray-500 {
+        background-color: #6b7280;
+    }
     .dark .hover\:bg-gray-600:hover {
-        background-color: var(--text-gray);
+        background-color: #374151;
     }
     .dark .result-nav-btn, .dark .result-nav-btn-grid {
-        background-color: var(--primary-blue);
+        background-color: #2c5282;
     }
     .dark .result-nav-btn:hover, .dark .result-nav-btn:active, 
     .dark .result-nav-btn-grid:hover, .dark .result-nav-btn-grid:active {
-        background-color: var(--deep-blue);
+        background-color: #1a365d;
     }
     .dark .result-nav-btn:disabled, .dark .result-nav-btn-grid:disabled {
-        background-color: var(--subtext-gray);
+        background-color: #6b7280;
     }
     .video-placeholder {
         width: 400px;
         height: 300px;
-        background-color: var(--bg-light);
+        background-color: #e5e7eb;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         margin-top: 10px;
         border-radius: 8px;
-        border: 1px solid var(--shadow-gray);
+        border: 1px solid #d1d5db;
     }
     .play-icon {
         font-size: 40px;
-        color: var(--primary-blue);
+        color: #2c5282;
     }
     .video-loading {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border: 4px solid var(--bg-light);
-        border-top: 4px solid var(--primary-blue);
+        border: 4px solid #e5e7eb;
+        border-top: 4px solid #2c5282;
         border-radius: 50%;
         width: 40px;
         height: 40px;
@@ -329,6 +275,7 @@
         100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
 &lt;/style&gt;
+    &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-gray-100 font-sans transition-colors duration-300&quot;&gt;
 &lt;!-- Header Section --&gt;
@@ -342,30 +289,12 @@
                 Toggle Dark Mode
             &lt;/button&gt;
 &lt;/div&gt;
-
-&lt;/head&gt;
-&lt;body class=&quot;bg-gray-100 font-sans transition-colors duration-300&quot;&gt;
-&lt;!-- Header Section --&gt;
-&lt;header class=&quot;bg-blue-600 text-white p-4 shadow-lg&quot; style=&quot;background-color: var(--primary-blue); color: white;&quot;&gt;
-&lt;div class=&quot;container mx-auto&quot;&gt;
-&lt;h1 class=&quot;text-2xl md:text-3xl font-bold header-text&quot;&gt;Anaesthesia Machine&lt;/h1&gt;
-&lt;p class=&quot;mt-2 text-sm md:text-base subheader-text&quot;&gt;
-                4 Questions | 4 Total Marks | 14 min Duration | ~60 sec/question
-            &lt;/p&gt;
-&lt;button class=&quot;mt-2 bg-gray-200 text-gray-800 px-3 py-1 rounded-lg hover:bg-gray-300 transition dark:bg-gray-600 dark:text-white&quot; 
-        style=&quot;background-color: var(--bg-light); color: var(--heading-gray);&quot;
-        onmouseover=&quot;this.style.backgroundColor=&#39;var(--shadow-gray)&#39;&quot; 
-        onmouseout=&quot;this.style.backgroundColor=&#39;var(--bg-light)&#39;&quot; 
-        id=&quot;theme-toggle&quot;&gt;
-                Toggle Dark Mode
-            &lt;/button&gt;
-&lt;/div&gt;
 &lt;/header&gt;
 &lt;!-- Instructions Section --&gt;
 &lt;section class=&quot;container mx-auto p-4 md:p-6 section-transition&quot; id=&quot;instructions&quot;&gt;
-&lt;div class=&quot;bg-white rounded-lg shadow-md p-4 md:p-6&quot; style=&quot;background-color: white;&quot;&gt;
+&lt;div class=&quot;bg-white rounded-lg shadow-md p-4 md:p-6&quot;&gt;
 &lt;h2 class=&quot;text-xl font-semibold mb-4&quot;&gt;Instructions&lt;/h2&gt;
-&lt;ul class=&quot;list-disc list-inside space-y-2 text-gray-700&quot; style=&quot;color: var(--text-gray);&quot;&gt;
+&lt;ul class=&quot;list-disc list-inside space-y-2 text-gray-700&quot;&gt;
 &lt;li&gt;This test contains 4 multiple choice questions.&lt;/li&gt;
 &lt;li&gt;Each question has only one correct answer.&lt;/li&gt;
 &lt;li&gt;You will have 14 minutes to complete the test.&lt;/li&gt;
@@ -373,7 +302,14 @@
 &lt;li&gt;Use the &quot;Mark for Review&quot; button to revisit questions.&lt;/li&gt;
 &lt;li&gt;Navigate using Previous/Next buttons or the Questions Navigation panel.&lt;/li&gt;
 &lt;li&gt;Click &quot;Submit&quot; to finish and view results.&lt;/li&gt;
+&lt;li&gt;The test will auto-submit when time runs out.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class=&quot;mt-6 flex space-x-4 button-group md:flex-row flex-col&quot;&gt;
+&lt;button class=&quot;bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition&quot; id=&quot;start-test&quot;&gt;Start Test&lt;/button&gt;
+&lt;a class=&quot;bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition&quot; href=&quot;https://t.me/neetpg_video&quot; target=&quot;_top&quot;&gt;Join Channel&lt;/a&gt;
+&lt;a class=&quot;bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition&quot; href=&quot;https://t.me/Dams_new_robot&quot; target=&quot;_top&quot;&gt;Contact Admin&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;error-message hidden&quot; id=&quot;error-message&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/section&gt;
 &lt;!-- Quiz Section --&gt;
