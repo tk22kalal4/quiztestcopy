@@ -356,6 +356,9 @@
 &lt;p class=&quot;mt-2 text-sm md:text-base subheader-text&quot;&gt;
                 4 Questions | 4 Total Marks | 14 min Duration | ~60 sec/question
             &lt;/p&gt;
+&lt;button class=&quot;mt-2 bg-gray-200 text-gray-800 px-3 py-1 rounded-lg hover:bg-gray-300 transition dark:bg-gray-600 dark:text-white&quot; id=&quot;theme-toggle&quot;&gt;
+                Toggle Dark Mode
+            &lt;/button&gt;
 &lt;/div&gt;
 &lt;/header&gt;
 &lt;!-- Instructions Section --&gt;
@@ -606,6 +609,7 @@
                 });
                 document.getElementById(&#x27;review-test&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; showResults(currentResultQuestion));
                 document.getElementById(&#x27;close-nav&#x27;).addEventListener(&#x27;click&#x27;, toggleNavPanel);
+                document.getElementById(&#x27;theme-toggle&#x27;).addEventListener(&#x27;click&#x27;, toggleTheme);
                 document.getElementById(&#x27;nav-filter&#x27;).addEventListener(&#x27;change&#x27;, updateNavPanel);
                 document.getElementById(&#x27;prev-result&#x27;).addEventListener(&#x27;click&#x27;, showPreviousResult);
                 document.getElementById(&#x27;next-result&#x27;).addEventListener(&#x27;click&#x27;, showNextResult);
@@ -1120,6 +1124,34 @@
                 debugLog(&quot;Failed to load audio: &quot; + e.message);
                 const container = document.getElementById(containerId);
                 container.innerHTML = `&lt;p class=&quot;text-red-500&quot;&gt;Error loading audio. &lt;a href=&quot;${audioUrl}&quot; target=&quot;_blank&quot; aria-label=&quot;Open audio in new tab&quot;&gt;Open audio&lt;/a&gt;&lt;/p&gt;`;
+            }
+        }
+
+        // Toggle dark mode
+        function toggleTheme() {
+            try {
+                debugLog(&quot;Toggling theme&quot;);
+                document.documentElement.classList.toggle(&#x27;dark&#x27;);
+                localStorage.setItem(&#x27;theme&#x27;, document.documentElement.classList.contains(&#x27;dark&#x27;) ? &#x27;dark&#x27; : &#x27;light&#x27;);
+                debugLog(&quot;Theme toggled successfully&quot;);
+            } catch (e) {
+                console.error(&quot;Error toggling theme:&quot;, e);
+                debugLog(&quot;Failed to toggle theme: &quot; + e.message);
+            }
+        }
+
+        // Load theme preference
+        function loadTheme() {
+            try {
+                debugLog(&quot;Loading theme preference&quot;);
+                const theme = localStorage.getItem(&#x27;theme&#x27;);
+                if (theme === &#x27;dark&#x27;) {
+                    document.documentElement.classList.add(&#x27;dark&#x27;);
+                }
+                debugLog(&quot;Theme loaded successfully&quot;);
+            } catch (e) {
+                console.error(&quot;Error loading theme:&quot;, e);
+                debugLog(&quot;Failed to load theme: &quot; + e.message);
             }
         }
 
