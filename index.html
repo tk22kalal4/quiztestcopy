@@ -868,21 +868,6 @@
                 debugLog("Failed to toggle quiz navigation panel: " + e.message);
             }
         }
-        
-        // Add close button dynamically (runs once on load)
-        function initNavPanel() {
-            const navPanel = document.getElementById('nav-panel');
-            if (navPanel && !navPanel.querySelector('.nav-panel-close')) {
-                const closeBtn = document.createElement('button');
-                closeBtn.className = 'nav-panel-close';
-                closeBtn.innerHTML = '&times;';
-                closeBtn.onclick = toggleNavPanel;
-                navPanel.prepend(closeBtn);
-            }
-        }
-        
-        // Call this when your page loads
-        initNavPanel();
         // Toggle results navigation panel
         function toggleResultsNavPanel() {
             try {
