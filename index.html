@@ -130,8 +130,6 @@
 &lt;script src=&quot;https://cdn.jsdelivr.net/npm/hls.js@latest&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js&quot;&gt;&lt;/script&gt;
 &lt;style&gt;
-        /* Custom styles for enhanced aesthetics and responsiveness */
-        &lt;style&gt;
     /* Custom styles for enhanced aesthetics and responsiveness */
     .option-btn {
         transition: all 0.3s ease;
@@ -159,6 +157,7 @@
         50% { opacity: 0.8; }
         100% { opacity: 1; }
     }
+    /* Replace the existing .question-nav-btn, .result-nav-btn-grid styles */
     .question-nav-btn, .result-nav-btn-grid {
         width: 40px;
         height: 40px;
@@ -184,6 +183,60 @@
     .marked-nav {
         border: 2px solid #f59e0b;
     }
+    
+    /* NEW: Add popup styles for nav-panel */
+    .nav-panel {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 600px;
+        max-height: 80vh;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        overflow-y: auto;
+        display: none;
+    }
+    .nav-panel.hidden {
+        display: none;
+    }
+    .nav-panel:not(.hidden) {
+        display: block;
+        animation: fadeIn 0.3s ease-out;
+    }
+    /* Overlay for background dimming */
+    .nav-panel-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+    .nav-panel-overlay:not(.hidden) {
+        display: block;
+        animation: fadeIn 0.3s ease-out;
+    }
+    /* Close button styling */
+    .nav-panel-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #6b7280;
+    }
+    .nav-panel-close:hover {
+        color: #374151;
+    }     
     .video-container, .audio-container {
         display: none;
         position: relative;
@@ -236,10 +289,9 @@
             height: 38px;
             font-size: 14px;
         }
-        .nav-panel, .results-nav-panel {
-            width: 100%;
-            max-width: 100%;
-            overscroll-behavior: contain;
+        .nav-panel {
+            width: 95%;
+            padding: 1rem;
         }
         .option-btn {
             padding: 12px;
@@ -789,18 +841,48 @@
         }
 
         // Toggle quiz navigation panel
+        // Replace toggleNavPanel() with this:
         function toggleNavPanel() {
             try {
-                debugLog(&quot;Toggling quiz navigation panel&quot;);
-                const navPanel = document.getElementById(&#x27;nav-panel&#x27;);
-                navPanel.classList.toggle(&#x27;hidden&#x27;);
-                debugLog(&quot;Quiz navigation panel toggled&quot;);
+                debugLog("Toggling quiz navigation panel");
+                const navPanel = document.getElementById('nav-panel');
+                const overlay = document.createElement('div');
+                overlay.className = 'nav-panel-overlay';
+                overlay.onclick = toggleNavPanel;
+                
+                if (navPanel.classList.contains('hidden')) {
+                    // Add overlay and show panel
+                    document.body.appendChild(overlay);
+                    overlay.classList.remove('hidden');
+                    navPanel.classList.remove('hidden');
+                    updateNavPanel();
+                } else {
+                    // Hide panel and remove overlay
+                    navPanel.classList.add('hidden');
+                    const existingOverlay = document.querySelector('.nav-panel-overlay');
+                    if (existingOverlay) existingOverlay.remove();
+                }
+                debugLog("Quiz navigation panel toggled");
             } catch (e) {
-                console.error(&quot;Error toggling quiz navigation panel:&quot;, e);
-                debugLog(&quot;Failed to toggle quiz navigation panel: &quot; + e.message);
+                console.error("Error toggling quiz navigation panel:", e);
+                debugLog("Failed to toggle quiz navigation panel: " + e.message);
             }
         }
-
+        
+        // Add close button dynamically (runs once on load)
+        function initNavPanel() {
+            const navPanel = document.getElementById('nav-panel');
+            if (navPanel && !navPanel.querySelector('.nav-panel-close')) {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'nav-panel-close';
+                closeBtn.innerHTML = '&times;';
+                closeBtn.onclick = toggleNavPanel;
+                navPanel.prepend(closeBtn);
+            }
+        }
+        
+        // Call this when your page loads
+        initNavPanel();
         // Toggle results navigation panel
         function toggleResultsNavPanel() {
             try {
