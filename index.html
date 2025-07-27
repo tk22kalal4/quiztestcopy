@@ -963,8 +963,8 @@
                 debugLog(`Showing result for question ${index + 1}`);
                 currentResultQuestion = index;
                 let correct = 0, wrong = 0, unanswered = 0, marked = 0;
-                answers.forEach((answer, i) =&gt; {
-                    const isCorrect = answer &amp;&amp; questions[i].options.find(opt =&gt; opt.label === answer)?.correct;
+                answers.forEach((answer, i) => {
+                    const isCorrect = answer && questions[i].options.find(opt => opt.label === answer)?.correct;
                     if (answer === null) unanswered++;
                     else if (isCorrect) correct++;
                     else wrong++;
@@ -975,47 +975,47 @@
                     throw new Error(`Question ${index} is undefined`);
                 }
                 const userAnswer = answers[index];
-                const isCorrect = userAnswer &amp;&amp; q.options.find(opt =&gt; opt.label === userAnswer)?.correct;
-                const resultsContent = document.getElementById(&#x27;results-content&#x27;);
+                const isCorrect = userAnswer && q.options.find(opt => opt.label === userAnswer)?.correct;
+                const resultsContent = document.getElementById('results-content');
                 resultsContent.innerHTML = `
-                    &lt;div class=&quot;border p-4 rounded-lg ${isCorrect ? &#x27;bg-green-50&#x27; : userAnswer ? &#x27;bg-red-50&#x27; : &#x27;bg-gray-50&#x27;}&quot;&gt;
-                        &lt;p class=&quot;font-semibold&quot;&gt;Question ${index + 1}: ${q.text || &#x27;No question text&#x27;}&lt;/p&gt;
-                        ${q.question_images &amp;&amp; q.question_images.length &gt; 0 ? q.question_images.map(url =&gt; `&lt;img src=&quot;${url}&quot; alt=&quot;Question Image&quot; class=&quot;max-w-full h-auto rounded-lg my-2&quot;&gt;`).join(&#x27;&#x27;) : &#x27;&#x27;}
-                        &lt;p&gt;&lt;strong&gt;Your Answer:&lt;/strong&gt; ${userAnswer ? `${userAnswer}. ${q.options.find(opt =&gt; opt.label === userAnswer)?.text || &#x27;Invalid option&#x27;}` : &#x27;Unanswered&#x27;}&lt;/p&gt;
-                        &lt;p&gt;&lt;strong&gt;Correct Answer:&lt;/strong&gt; ${q.correct_answer || &#x27;Unknown&#x27;}&lt;/p&gt;
-                        &lt;div class=&quot;mt-2&quot;&gt;${q.explanation || &#x27;No explanation available&#x27;}&lt;/div&gt;
-                        ${q.explanation_images &amp;&amp; q.explanation_images.length &gt; 0 ? q.explanation_images.map(url =&gt; `&lt;img src=&quot;${url}&quot; alt=&quot;Explanation Image&quot; class=&quot;max-w-full h-auto rounded-lg my-2&quot;&gt;`).join(&#x27;&#x27;) : &#x27;&#x27;}
+                    <div class="border-2 border-[#2c5281] bg-white p-4 rounded-lg">
+                        <p class="font-semibold">Question ${index + 1}: ${q.text || 'No question text'}</p>
+                        ${q.question_images && q.question_images.length > 0 ? q.question_images.map(url => `<img src="${url}" alt="Question Image" class="max-w-full h-auto rounded-lg my-2">`).join('') : ''}
+                        <p><strong>Your Answer:</strong> ${userAnswer ? `${userAnswer}. ${q.options.find(opt => opt.label === userAnswer)?.text || 'Invalid option'}` : 'Unanswered'}</p>
+                        <p><strong>Correct Answer:</strong> ${q.correct_answer || 'Unknown'}</p>
+                        <div class="mt-2">${q.explanation || 'No explanation available'}</div>
+                        ${q.explanation_images && q.explanation_images.length > 0 ? q.explanation_images.map(url => `<img src="${url}" alt="Explanation Image" class="max-w-full h-auto rounded-lg my-2">`).join('') : ''}
                         ${q.video ? `
-                            &lt;button class=&quot;play-video bg-[#2c5281] text-white px-4 py-2 rounded-lg mt-2&quot; 
-                                    onclick=&quot;loadVideo(this, &#x27;${q.video}&#x27;, &#x27;video-${index}&#x27;)&quot;
-                                    aria-label=&quot;Play explanation video for Question ${index + 1}&quot;&gt;
+                            <button class="play-video bg-[#2c5281] text-white px-4 py-2 rounded-lg mt-2" 
+                                    onclick="loadVideo(this, '${q.video}', 'video-${index}')"
+                                    aria-label="Play explanation video for Question ${index + 1}">
                                 Play Video Explanation
-                            &lt;/button&gt;
-                            &lt;div id=&quot;video-${index}&quot; class=&quot;video-container mt-2&quot;&gt;&lt;/div&gt;
-                        ` : &#x27;&lt;p class=&quot;text-gray-500 mt-2&quot;&gt;No video available&lt;/p&gt;&#x27;}
+                            </button>
+                            <div id="video-${index}" class="video-container mt-2"></div>
+                        ` : '<p class="text-gray-500 mt-2">No video available</p>'}
                         ${q.audio ? `
-                            &lt;button class=&quot;play-audio bg-[#2c5281] text-white px-4 py-2 rounded-lg mt-2&quot; 
-                                    onclick=&quot;loadAudio(this, &#x27;${q.audio}&#x27;, &#x27;audio-${index}&#x27;)&quot;
-                                    aria-label=&quot;Play audio explanation for Question ${index + 1}&quot;&gt;
+                            <button class="play-audio bg-[#2c5281] text-white px-4 py-2 rounded-lg mt-2" 
+                                    onclick="loadAudio(this, '${q.audio}', 'audio-${index}')"
+                                    aria-label="Play audio explanation for Question ${index + 1}">
                                 Play Audio Explanation
-                            &lt;/button&gt;
-                            &lt;div id=&quot;audio-${index}&quot; class=&quot;audio-container mt-2&quot;&gt;&lt;/div&gt;
-                        ` : &#x27;&#x27;}
-                    &lt;/div&gt;
+                            </button>
+                            <div id="audio-${index}" class="audio-container mt-2"></div>
+                        ` : ''}
+                    </div>
                 `;
-                document.getElementById(&#x27;correct-count&#x27;).textContent = correct;
-                document.getElementById(&#x27;wrong-count&#x27;).textContent = wrong;
-                document.getElementById(&#x27;unanswered-count&#x27;).textContent = unanswered;
-                document.getElementById(&#x27;marked-count&#x27;).textContent = marked;
-                document.getElementById(&#x27;result-question-number&#x27;).innerHTML = `Question &lt;span&gt;${index + 1}&lt;/span&gt; of ${questions.length}`;
-                document.getElementById(&#x27;prev-result&#x27;).disabled = index === 0;
-                document.getElementById(&#x27;next-result&#x27;).disabled = index === questions.length - 1;
+                document.getElementById('correct-count').textContent = correct;
+                document.getElementById('wrong-count').textContent = wrong;
+                document.getElementById('unanswered-count').textContent = unanswered;
+                document.getElementById('marked-count').textContent = marked;
+                document.getElementById('result-question-number').innerHTML = `Question <span>${index + 1}</span> of ${questions.length}`;
+                document.getElementById('prev-result').disabled = index === 0;
+                document.getElementById('next-result').disabled = index === questions.length - 1;
                 updateResultsNavPanel();
-                window.scrollTo({ top: 0, behavior: &#x27;smooth&#x27; });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 debugLog(`Result for question ${index + 1} displayed successfully`);
             } catch (e) {
-                console.error(&quot;Error displaying result:&quot;, e);
-                debugLog(&quot;Failed to display result: &quot; + e.message);
+                console.error("Error displaying result:", e);
+                debugLog("Failed to display result: " + e.message);
             }
         }
 
