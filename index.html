@@ -978,7 +978,7 @@
                 const isCorrect = userAnswer &amp;&amp; q.options.find(opt =&gt; opt.label === userAnswer)?.correct;
                 const resultsContent = document.getElementById(&#x27;results-content&#x27;);
                 resultsContent.innerHTML = `
-                    &lt;div class=&quot;border p-4 rounded-lg ${isCorrect ? &#x27;bg-green-50&#x27; : userAnswer ? &#x27;bg-red-50&#x27; : &#x27;bg-gray-50&#x27;}&quot;&gt;
+                    &lt;div class=&quot;border p-4 rounded-lg ${isCorrect ? &#x27;bg-white-50&#x27; : userAnswer ? &#x27;bg-white-50&#x27; : &#x27;bg-white-50&#x27;}&quot;&gt;
                         &lt;p class=&quot;font-semibold&quot;&gt;Question ${index + 1}: ${q.text || &#x27;No question text&#x27;}&lt;/p&gt;
                         ${q.question_images &amp;&amp; q.question_images.length &gt; 0 ? q.question_images.map(url =&gt; `&lt;img src=&quot;${url}&quot; alt=&quot;Question Image&quot; class=&quot;max-w-full h-auto rounded-lg my-2&quot;&gt;`).join(&#x27;&#x27;) : &#x27;&#x27;}
                         &lt;p&gt;&lt;strong&gt;Your Answer:&lt;/strong&gt; ${userAnswer ? `${userAnswer}. ${q.options.find(opt =&gt; opt.label === userAnswer)?.text || &#x27;Invalid option&#x27;}` : &#x27;Unanswered&#x27;}&lt;/p&gt;
