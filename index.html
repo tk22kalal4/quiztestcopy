@@ -8,11 +8,11 @@
   button {
     margin: 5px;
     padding: 10px 15px;
-    background: var(--bg-light);
-    border: 1px solid var(--shadow-gray);
+    background: #ffffff;
+    border: 1px solid #2d3748; /* dark gray border */
     border-radius: 4px;
     cursor: pointer;
-    color: var(--heading-gray);
+    color: #000000; /* black text */
   }
   button:hover {
     background: var(--primary-blue);
@@ -28,9 +28,9 @@
   }
 
   .dropdown-toggle {
-    background: var(--primary-blue);
-    color: white;
-    border: none;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #2d3748;
   }
 
   .dropdown-menu {
@@ -38,8 +38,8 @@
     position: absolute;
     right: 0;
     margin-top: 5px;
-    background: white;
-    border: 1px solid var(--shadow-gray);
+    background: #ffffff;
+    border: 1px solid #2d3748;
     border-radius: 4px;
     max-height: 300px;
     overflow-y: auto;
@@ -53,6 +53,9 @@
     text-align: left;
     margin: 0;
     border-radius: 0;
+    background: #ffffff;
+    color: #000000;
+    border-bottom: 1px solid #d1d5db;
   }
 
   .dropdown-menu button:hover {
@@ -69,7 +72,7 @@
     }
     document.querySelectorAll('.iframe-container').forEach(div => div.style.display = 'none');
     document.getElementById(id).style.display = 'block';
-    document.getElementById('dropdownMenu').style.display = 'none'; // collapse dropdown after selection
+    document.getElementById('dropdownMenu').style.display = 'none';
     window.scrollTo(0, 0);
   }
 
