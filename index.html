@@ -341,33 +341,38 @@
 &lt;/head&gt;
 &lt;body class=&quot;bg-gray-100 font-sans transition-colors duration-300&quot;&gt;
 &lt;!-- Header Section --&gt;
-&lt;header class=&quot;bg-[#2c5281] text-white p-4 shadow-lg&quot;&gt;
-  &lt;div class=&quot;container mx-auto&quot;&gt;
-    &lt;h1 class=&quot;text-2xl md:text-3xl font-bold header-text&quot;&gt;Anaesthesia Machine&lt;/h1&gt;
-    &lt;p class=&quot;mt-2 text-sm md:text-base subheader-text&quot;&gt;
-      4 Questions | 4 Total Marks | 14 min Duration | ~60 sec/question
-    &lt;/p&gt;
-  &lt;/div&gt;
+&lt;header class=&quot;bg-blue-600 text-white p-4 shadow-lg&quot;&gt;
+&lt;div class=&quot;container mx-auto&quot;&gt;
+&lt;h1 class=&quot;text-2xl md:text-3xl font-bold header-text&quot;&gt;Anaesthesia Machine&lt;/h1&gt;
+&lt;p class=&quot;mt-2 text-sm md:text-base subheader-text&quot;&gt;
+                4 Questions | 4 Total Marks | 14 min Duration | ~60 sec/question
+            &lt;/p&gt;
+&lt;button class=&quot;mt-2 bg-gray-200 text-gray-800 px-3 py-1 rounded-lg hover:bg-gray-300 transition dark:bg-gray-600 dark:text-white&quot; id=&quot;theme-toggle&quot;&gt;
+                Toggle Dark Mode
+            &lt;/button&gt;
+&lt;/div&gt;
 &lt;/header&gt;
-
-&lt;!-- Main Quiz Section (required wrapper) --&gt;
-&lt;section class=&quot;container mx-auto p-4 md:p-6 section-transition&quot; id=&quot;quiz-section&quot;&gt;
-  &lt;div class=&quot;bg-white rounded-lg shadow-md p-4 md:p-6&quot;&gt;
-    &lt;div class=&quot;mt-6 flex space-x-4 button-group md:flex-row flex-col&quot;&gt;
-      &lt;button class=&quot;bg-[#2d3748] text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition&quot; id=&quot;start-test&quot;&gt;
-        Start Test
-      &lt;/button&gt;
-      &lt;a class=&quot;bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition&quot; href=&quot;https://t.me/neetpg_video&quot; target=&quot;_top&quot;&gt;
-        Join Channel
-      &lt;/a&gt;
-      &lt;a class=&quot;bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition&quot; href=&quot;https://t.me/Dams_new_robot&quot; target=&quot;_top&quot;&gt;
-        Contact Admin
-      &lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;error-message hidden text-red-600 mt-4&quot; id=&quot;error-message&quot;&gt;
-      Error initializing quiz. Please check the console for details or contact support.
-    &lt;/div&gt;
-  &lt;/div&gt;
+&lt;!-- Instructions Section --&gt;
+&lt;section class=&quot;container mx-auto p-4 md:p-6 section-transition&quot; id=&quot;instructions&quot;&gt;
+&lt;div class=&quot;bg-white rounded-lg shadow-md p-4 md:p-6&quot;&gt;
+&lt;h2 class=&quot;text-xl font-semibold mb-4&quot;&gt;Instructions&lt;/h2&gt;
+&lt;ul class=&quot;list-disc list-inside space-y-2 text-gray-700&quot;&gt;
+&lt;li&gt;This test contains 4 multiple choice questions.&lt;/li&gt;
+&lt;li&gt;Each question has only one correct answer.&lt;/li&gt;
+&lt;li&gt;You will have 14 minutes to complete the test.&lt;/li&gt;
+&lt;li&gt;Click or tap on an option to select your answer.&lt;/li&gt;
+&lt;li&gt;Use the &quot;Mark for Review&quot; button to revisit questions.&lt;/li&gt;
+&lt;li&gt;Navigate using Previous/Next buttons or the Questions Navigation panel.&lt;/li&gt;
+&lt;li&gt;Click &quot;Submit&quot; to finish and view results.&lt;/li&gt;
+&lt;li&gt;The test will auto-submit when time runs out.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;mt-6 flex space-x-4 button-group md:flex-row flex-col&quot;&gt;
+&lt;button class=&quot;bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition&quot; id=&quot;start-test&quot;&gt;Start Test&lt;/button&gt;
+&lt;a class=&quot;bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition&quot; href=&quot;https://t.me/neetpg_video&quot; target=&quot;_top&quot;&gt;Join Channel&lt;/a&gt;
+&lt;a class=&quot;bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition&quot; href=&quot;https://t.me/Dams_new_robot&quot; target=&quot;_top&quot;&gt;Contact Admin&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;error-message hidden&quot; id=&quot;error-message&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;/section&gt;
 &lt;!-- Quiz Section --&gt;
 &lt;section class=&quot;container mx-auto p-4 md:p-6 hidden section-transition&quot; id=&quot;quiz&quot;&gt;
