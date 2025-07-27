@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <title>Prep RR Qb Anaesthesia - Combined Tests</title>
   <style>
-  body { font-family: Arial, sans-serif; padding: 20px; }
+  body {
+    font-family: Arial, sans-serif;
+    padding: 0; /* Remove top gap */
+    margin: 0;   /* Also ensure browser default margin is reset */
+  }
+
   button {
     margin: 5px;
     padding: 10px 15px;
@@ -13,11 +18,15 @@
     border-radius: 4px;
     cursor: pointer;
     color: #000000; /* black text */
+    position: relative;
+    top: 5px; /* Push button slightly down */
   }
+
   button:hover {
     background: #2c5281;
     color: #000000;
   }
+
   .iframe-container { margin-top: 20px; }
   .iframe-container iframe { display: block; }
 
@@ -62,8 +71,8 @@
     background: #2c5281; /* light gray hover */
     color: #000000;
   }
-
 </style>
+
 <script>
   function showTest(id) {
     if (document.querySelector('.iframe-container:not([style*="display: none"])') !== document.getElementById(id)) {
