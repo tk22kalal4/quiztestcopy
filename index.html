@@ -950,43 +950,7 @@
             }
         }
         
-        // NEW DROPDOWN FUNCTIONALITY
-        document.getElementById(&#x27;submit-btn&#x27;)?.addEventListener(&#x27;click&#x27;, function(e) {
-            e.stopPropagation();
-            const popup = document.getElementById(&#x27;submit-popup&#x27;);
-            const attempted = answers.filter(a =&gt; a !== null).length;
-            document.getElementById(&#x27;attempted-count&#x27;).textContent = attempted;
-            document.getElementById(&#x27;unattempted-count&#x27;).textContent = questions.length - attempted;
-            popup.classList.toggle(&#x27;hidden&#x27;);
-        });
         
-        document.getElementById(&#x27;nav-btn&#x27;)?.addEventListener(&#x27;click&#x27;, function(e) {
-            e.stopPropagation();
-            document.getElementById(&#x27;nav-popup&#x27;).classList.toggle(&#x27;hidden&#x27;);
-        });
-        
-        document.getElementById(&#x27;results-nav-btn&#x27;)?.addEventListener(&#x27;click&#x27;, function(e) {
-            e.stopPropagation();
-            document.getElementById(&#x27;results-popup&#x27;).classList.toggle(&#x27;hidden&#x27;);
-            if (!document.getElementById(&#x27;results-popup&#x27;).classList.contains(&#x27;hidden&#x27;)) {
-                updateResultsNavPanel();
-            }
-        });
-        
-        document.addEventListener(&#x27;click&#x27;, function() {
-            document.getElementById(&#x27;submit-popup&#x27;)?.classList.add(&#x27;hidden&#x27;);
-            document.getElementById(&#x27;nav-popup&#x27;)?.classList.add(&#x27;hidden&#x27;);
-            document.getElementById(&#x27;results-popup&#x27;)?.classList.add(&#x27;hidden&#x27;);
-        });
-        
-        document.getElementById(&#x27;confirm-submit&#x27;)?.addEventListener(&#x27;click&#x27;, function() {
-            submitTest();
-            document.getElementById(&#x27;submit-popup&#x27;).classList.add(&#x27;hidden&#x27;);
-        });
-        
-        document.getElementById(&#x27;cancel-submit&#x27;)?.addEventListener(&#x27;click&#x27;, function() {
-            document.getElementById(&#x27;submit-popup&#x27;).classList.add(&#x27;hidden&#x27;);
-        });
         // Show result for a single question
         function showResults(index) {
             try {
