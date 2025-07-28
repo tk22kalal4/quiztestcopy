@@ -489,6 +489,86 @@
       
 &lt;!-- JavaScript Logic --&gt;
 &lt;script&gt;
+        // Dropdown functionality for new UI elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Submit button dropdown
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const popup = document.getElementById('submit-popup');
+                    const attempted = answers.filter(a => a !== null).length;
+                    document.getElementById('attempted-count').textContent = attempted;
+                    document.getElementById('unattempted-count').textContent = questions.length - attempted;
+                    popup.classList.toggle('hidden');
+                });
+            }
+        
+            // Navigation button dropdown
+            const navBtn = document.getElementById('nav-btn');
+            if (navBtn) {
+                navBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    document.getElementById('nav-popup').classList.toggle('hidden');
+                });
+            }
+        
+            // Results navigation dropdown
+            const resultsNavBtn = document.getElementById('results-nav-btn');
+            if (resultsNavBtn) {
+                resultsNavBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const popup = document.getElementById('results-popup');
+                    popup.classList.toggle('hidden');
+                    if (!popup.classList.contains('hidden')) {
+                        updateResultsNavPanel();
+                    }
+                });
+            }
+        
+            // Close all dropdowns when clicking outside
+            document.addEventListener('click', function() {
+                const submitPopup = document.getElementById('submit-popup');
+                const navPopup = document.getElementById('nav-popup');
+                const resultsPopup = document.getElementById('results-popup');
+                
+                if (submitPopup) submitPopup.classList.add('hidden');
+                if (navPopup) navPopup.classList.add('hidden');
+                if (resultsPopup) resultsPopup.classList.add('hidden');
+            });
+        
+            // Submit confirmation
+            const confirmSubmit = document.getElementById('confirm-submit');
+            if (confirmSubmit) {
+                confirmSubmit.addEventListener('click', function() {
+                    submitTest();
+                    document.getElementById('submit-popup').classList.add('hidden');
+                });
+            }
+        
+            // Cancel submit
+            const cancelSubmit = document.getElementById('cancel-submit');
+            if (cancelSubmit) {
+                cancelSubmit.addEventListener('click', function() {
+                    document.getElementById('submit-popup').classList.add('hidden');
+                });
+            }
+        });
+        
+        // Modified handler functions for dropdown navigation
+        function handleNavClick(index) {
+            showQuestion(index);
+            const navPopup = document.getElementById('nav-popup');
+            if (navPopup) navPopup.classList.add('hidden');
+        }
+        
+        function handleResultNavClick(index) {
+            showResults(index);
+            const resultsPopup = document.getElementById('results-popup');
+            if (resultsPopup) resultsPopup.classList.add('hidden');
+        }
+    &lt;/script&gt;
+&lt;script&gt;
         // Enable debug mode for detailed logging
         const DEBUG_MODE = true;
 
@@ -935,8 +1015,7 @@
                 document.getElementById(&#x27;quiz&#x27;).classList.add(&#x27;hidden&#x27;);
                 document.getElementById(&#x27;submit-modal&#x27;).classList.add(&#x27;hidden&#x27;);
                 document.getElementById(&#x27;results&#x27;).classList.remove(&#x27;hidden&#x27;);
-                showResults(0); // Start with first question
-                // Trigger confetti animation
+                showResults(0);
                 confetti({
                     particleCount: 100,
                     spread: 70,
