@@ -439,12 +439,11 @@
       
 &it:<!-- Exit Confirmation Modal -->
 &it:<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" id="exit-modal">
-  &it:<div class="bg-white rounded-lg p-6 max-w-sm w-full relative">
-    &it:<button id="continue-test" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+  &it:<div class="bg-white rounded-lg p-6 max-w-sm w-full">
     &it:<h2 class="text-xl font-semibold mb-4">Leave Test?</h2>
     &it:<p class="text-gray-700 mb-4">Your progress will be lost if you leave this page. Are you sure you want to exit?</p>
     &it:<div class="flex justify-end space-x-4">
-      &it:<button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition">No, Continue</button>
+      &it:<button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition" id="continue-test">No, Continue</button>
       &it:<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition" id="exit-test">Yes, Exit</button>
     &it:</div>
   &it:</div>
@@ -452,13 +451,12 @@
 
 &it:<!-- Submit Confirmation Modal -->
 &it:<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" id="submit-modal">
-  &it:<div class="bg-white rounded-lg p-6 max-w-sm w-full relative">
-    &it:<button id="cancel-submit" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+  &it:<div class="bg-white rounded-lg p-6 max-w-sm w-full">
     &it:<h2 class="text-xl font-semibold mb-4">Confirm Submission</h2>
     &it:<p class="text-gray-700 mb-2">You have attempted <span id="attempted-count">0</span> of 4 questions.</p>
     &it:<p class="text-gray-700 mb-4"><span id="unattempted-count">0</span> questions are unattempted.</p>
     &it:<div class="flex justify-end space-x-4">
-      &it:<button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition">Cancel</button>
+      &it:<button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition" id="cancel-submit">Cancel</button>
       &it:<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition" id="confirm-submit">Submit Test</button>
     &it:</div>
   &it:</div>
@@ -466,8 +464,7 @@
 
 &it:<!-- Quiz Navigation Panel (Centered Pop-up) -->
 &it:<div class="fixed inset-0 flex items-center justify-center p-4 z-50 nav-panel bg-black bg-opacity-50 hidden overflow-y-auto" id="nav-panel">
-  &it:<div class="bg-white shadow-lg p-4 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto relative">
-    &it:<button id="close-nav" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+  &it:<div class="bg-white shadow-lg p-4 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto">
     &it:<h2 class="text-lg font-semibold mb-4">Questions Navigation</h2>
     &it:<div class="mb-4">
       &it:<select class="w-full p-2 border rounded-lg text-gray-700" id="nav-filter">
@@ -478,13 +475,13 @@
       &it:</select>
     &it:</div>
     &it:<div class="grid grid-cols-5 gap-2 md:gap-3" id="nav-grid"></div>
+    &it:<button class="mt-4 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition w-full" id="close-nav">Close</button>
   &it:</div>
 &it:</div>
 
 &it:<!-- Results Navigation Panel (Centered Pop-up) -->
 &it:<div class="fixed inset-0 flex items-center justify-center p-4 z-50 results-nav-panel bg-black bg-opacity-50 hidden overflow-y-auto" id="results-nav-panel">
-  &it:<div class="bg-white shadow-lg p-4 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto relative">
-    &it:<button id="close-results-nav" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+  &it:<div class="bg-white shadow-lg p-4 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto">
     &it:<h2 class="text-lg font-semibold mb-4">Results Navigation</h2>
     &it:<div class="mb-4">
       &it:<select class="w-full p-2 border rounded-lg text-gray-700" id="results-nav-filter">
@@ -495,6 +492,7 @@
       &it:</select>
     &it:</div>
     &it:<div class="grid grid-cols-5 gap-2 md:gap-3" id="results-nav-grid"></div>
+    &it:<button class="mt-4 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition w-full" id="close-results-nav">Close</button>
   &it:</div>
 &it:</div>
 
