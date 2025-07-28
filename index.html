@@ -87,11 +87,6 @@
 
 <script>
   function showTest(id) {
-    if (document.querySelector('.iframe-container:not([style*="display: none"])') !== document.getElementById(id)) {
-      if (!confirm("Are you sure you want to switch tests? Any unsaved progress may be lost.")) {
-        return;
-      }
-    }
     document.querySelectorAll('.iframe-container').forEach(div => div.style.display = 'none');
     document.getElementById(id).style.display = 'block';
     document.getElementById('dropdownMenu').style.display = 'none';
@@ -111,25 +106,23 @@
     }
   });
 </script>
-</head>
-<body>
 
-  <div class="dropdown-wrapper">
-    <button class="dropdown-toggle" id="dropdownToggle" onclick="toggleDropdown()">⋮☰ INDEX</button>
-    <div class="dropdown-menu" id="dropdownMenu">
-      <button onclick="showTest('test1')">Anaesthesia_Machine</button>
-      <button onclick="showTest('test2')">Cardiopulmonary_Cerebral_Resuscitation</button>
-      <button onclick="showTest('test3')">Difficult_airway_management___Ventilators</button>
-      <button onclick="showTest('test4')">Inhalational_Anaesthetics</button>
-      <button onclick="showTest('test5')">Intravenous_Anaesthetic_Agents</button>
-      <button onclick="showTest('test6')">Introduction_and_PAC</button>
-      <button onclick="showTest('test7')">Local_Anaesthetics</button>
-      <button onclick="showTest('test8')">Monitoring_during_anaesthesia</button>
-      <button onclick="showTest('test9')">Muscle_Relaxants</button>
-      <button onclick="showTest('test10')">Regional_Anaesthesia__Spinal__Epidural___Caudal</button>
-    </div>
+<div class="dropdown-wrapper">
+  <button class="dropdown-toggle" id="dropdownToggle" onclick="toggleDropdown()">⋮☰ INDEX</button>
+  <div class="dropdown-menu" id="dropdownMenu">
+    <button onclick="showTest('test1')">Anaesthesia_Machine</button>
+    <button onclick="showTest('test2')">Cardiopulmonary_Cerebral_Resuscitation</button>
+    <button onclick="showTest('test3')">Difficult_airway_management___Ventilators</button>
+    <button onclick="showTest('test4')">Inhalational_Anaesthetics</button>
+    <button onclick="showTest('test5')">Intravenous_Anaesthetic_Agents</button>
+    <button onclick="showTest('test6')">Introduction_and_PAC</button>
+    <button onclick="showTest('test7')">Local_Anaesthetics</button>
+    <button onclick="showTest('test8')">Monitoring_during_anaesthesia</button>
+    <button onclick="showTest('test9')">Muscle_Relaxants</button>
+    <button onclick="showTest('test10')">Regional_Anaesthesia__Spinal__Epidural___Caudal</button>
   </div>
-
+</div>
+  
 <div id="test1" class="iframe-container" style="display:block;">
     <iframe srcdoc="&lt;!DOCTYPE html&gt;
 
