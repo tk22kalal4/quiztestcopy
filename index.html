@@ -436,64 +436,68 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/section&gt;
-&lt;!-- Exit Confirmation Modal --&gt;
-&lt;div class=&quot;fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center pt-[10vh] hidden&quot; id=&quot;exit-modal&quot;&gt;
-  &lt;div class=&quot;bg-white rounded-lg p-6 max-w-sm w-full&quot;&gt;
-    &lt;h2 class=&quot;text-xl font-semibold mb-4&quot;&gt;Leave Test?&lt;/h2&gt;
-    &lt;p class=&quot;text-gray-700 mb-4&quot;&gt;Your progress will be lost if you leave this page. Are you sure you want to exit?&lt;/p&gt;
-    &lt;div class=&quot;flex justify-end space-x-4&quot;&gt;
-      &lt;button class=&quot;bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition&quot; id=&quot;continue-test&quot;&gt;No, Continue&lt;/button&gt;
-      &lt;button class=&quot;bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition&quot; id=&quot;exit-test&quot;&gt;Yes, Exit&lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+      
+&it:<!-- Exit Confirmation Modal -->
+&it:<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" id="exit-modal">
+  &it:<div class="bg-white rounded-lg p-6 max-w-sm w-full relative">
+    &it:<button id="continue-test" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+    &it:<h2 class="text-xl font-semibold mb-4">Leave Test?</h2>
+    &it:<p class="text-gray-700 mb-4">Your progress will be lost if you leave this page. Are you sure you want to exit?</p>
+    &it:<div class="flex justify-end space-x-4">
+      &it:<button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition">No, Continue</button>
+      &it:<button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition" id="exit-test">Yes, Exit</button>
+    &it:</div>
+  &it:</div>
+&it:</div>
 
-&lt;!-- Submit Confirmation Modal --&gt;
-&lt;div class=&quot;fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center pt-[10vh] hidden&quot; id=&quot;submit-modal&quot;&gt;
-  &lt;div class=&quot;bg-white rounded-lg p-6 max-w-sm w-full&quot;&gt;
-    &lt;h2 class=&quot;text-xl font-semibold mb-4&quot;&gt;Confirm Submission&lt;/h2&gt;
-    &lt;p class=&quot;text-gray-700 mb-2&quot;&gt;You have attempted &lt;span id=&quot;attempted-count&quot;&gt;0&lt;/span&gt; of 4 questions.&lt;/p&gt;
-    &lt;p class=&quot;text-gray-700 mb-4&quot;&gt;&lt;span id=&quot;unattempted-count&quot;&gt;0&lt;/span&gt; questions are unattempted.&lt;/p&gt;
-    &lt;div class=&quot;flex justify-end space-x-4&quot;&gt;
-      &lt;button class=&quot;bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition&quot; id=&quot;cancel-submit&quot;&gt;Cancel&lt;/button&gt;
-      &lt;button class=&quot;bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition&quot; id=&quot;confirm-submit&quot;&gt;Submit Test&lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&it:<!-- Submit Confirmation Modal -->
+&it:<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" id="submit-modal">
+  &it:<div class="bg-white rounded-lg p-6 max-w-sm w-full relative">
+    &it:<button id="cancel-submit" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+    &it:<h2 class="text-xl font-semibold mb-4">Confirm Submission</h2>
+    &it:<p class="text-gray-700 mb-2">You have attempted <span id="attempted-count">0</span> of 4 questions.</p>
+    &it:<p class="text-gray-700 mb-4"><span id="unattempted-count">0</span> questions are unattempted.</p>
+    &it:<div class="flex justify-end space-x-4">
+      &it:<button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition">Cancel</button>
+      &it:<button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition" id="confirm-submit">Submit Test</button>
+    &it:</div>
+  &it:</div>
+&it:</div>
 
-&lt;!-- Quiz Navigation Panel (Centered Pop-up) --&gt;
-&lt;div class=&quot;fixed inset-0 flex items-start justify-center pt-[10vh] p-4 z-50 nav-panel bg-black bg-opacity-50 hidden overflow-y-auto&quot; id=&quot;nav-panel&quot;&gt;
-  &lt;div class=&quot;bg-white shadow-lg p-4 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto&quot;&gt;
-    &lt;h2 class=&quot;text-lg font-semibold mb-4&quot;&gt;Questions Navigation&lt;/h2&gt;
-    &lt;div class=&quot;mb-4&quot;&gt;
-      &lt;select class=&quot;w-full p-2 border rounded-lg text-gray-700&quot; id=&quot;nav-filter&quot;&gt;
-        &lt;option value=&quot;all&quot;&gt;All Questions&lt;/option&gt;
-        &lt;option value=&quot;answered&quot;&gt;Answered&lt;/option&gt;
-        &lt;option value=&quot;unanswered&quot;&gt;Unanswered&lt;/option&gt;
-        &lt;option value=&quot;marked&quot;&gt;Marked for Review&lt;/option&gt;
-      &lt;/select&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;grid grid-cols-5 gap-2 md:gap-3&quot; id=&quot;nav-grid&quot;&gt;&lt;/div&gt;
-    &lt;button class=&quot;mt-4 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition w-full&quot; id=&quot;close-nav&quot;&gt;Close&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&it:<!-- Quiz Navigation Panel (Centered Pop-up) -->
+&it:<div class="fixed inset-0 flex items-center justify-center p-4 z-50 nav-panel bg-black bg-opacity-50 hidden overflow-y-auto" id="nav-panel">
+  &it:<div class="bg-white shadow-lg p-4 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto relative">
+    &it:<button id="close-nav" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+    &it:<h2 class="text-lg font-semibold mb-4">Questions Navigation</h2>
+    &it:<div class="mb-4">
+      &it:<select class="w-full p-2 border rounded-lg text-gray-700" id="nav-filter">
+        &it:<option value="all">All Questions</option>
+        &it:<option value="answered">Answered</option>
+        &it:<option value="unanswered">Unanswered</option>
+        &it:<option value="marked">Marked for Review</option>
+      &it:</select>
+    &it:</div>
+    &it:<div class="grid grid-cols-5 gap-2 md:gap-3" id="nav-grid"></div>
+  &it:</div>
+&it:</div>
 
-&lt;!-- Results Navigation Panel (Centered Pop-up) --&gt;
-&lt;div class=&quot;fixed inset-0 flex items-start justify-center pt-[10vh] p-4 z-50 results-nav-panel bg-black bg-opacity-50 hidden overflow-y-auto&quot; id=&quot;results-nav-panel&quot;&gt;
-  &lt;div class=&quot;bg-white shadow-lg p-4 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto&quot;&gt;
-    &lt;h2 class=&quot;text-lg font-semibold mb-4&quot;&gt;Results Navigation&lt;/h2&gt;
-    &lt;div class=&quot;mb-4&quot;&gt;
-      &lt;select class=&quot;w-full p-2 border rounded-lg text-gray-700&quot; id=&quot;results-nav-filter&quot;&gt;
-        &lt;option value=&quot;all&quot;&gt;All Questions&lt;/option&gt;
-        &lt;option value=&quot;answered&quot;&gt;Answered&lt;/option&gt;
-        &lt;option value=&quot;unanswered&quot;&gt;Unanswered&lt;/option&gt;
-        &lt;option value=&quot;marked&quot;&gt;Marked for Review&lt;/option&gt;
-      &lt;/select&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;grid grid-cols-5 gap-2 md:gap-3&quot; id=&quot;results-nav-grid&quot;&gt;&lt;/div&gt;
-    &lt;button class=&quot;mt-4 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition w-full&quot; id=&quot;close-results-nav&quot;&gt;Close&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&it:<!-- Results Navigation Panel (Centered Pop-up) -->
+&it:<div class="fixed inset-0 flex items-center justify-center p-4 z-50 results-nav-panel bg-black bg-opacity-50 hidden overflow-y-auto" id="results-nav-panel">
+  &it:<div class="bg-white shadow-lg p-4 rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto relative">
+    &it:<button id="close-results-nav" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+    &it:<h2 class="text-lg font-semibold mb-4">Results Navigation</h2>
+    &it:<div class="mb-4">
+      &it:<select class="w-full p-2 border rounded-lg text-gray-700" id="results-nav-filter">
+        &it:<option value="all">All Questions</option>
+        &it:<option value="answered">Answered</option>
+        &it:<option value="unanswered">Unanswered</option>
+        &it:<option value="marked">Marked for Review</option>
+      &it:</select>
+    &it:</div>
+    &it:<div class="grid grid-cols-5 gap-2 md:gap-3" id="results-nav-grid"></div>
+  &it:</div>
+&it:</div>
+
 &lt;!-- JavaScript Logic --&gt;
 &lt;script&gt;
         // Enable debug mode for detailed logging
