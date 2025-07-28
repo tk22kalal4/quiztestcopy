@@ -3,6 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <title>Prep RR Qb Anaesthesia - Combined Tests</title>
+  <script>
+    // Additional positioning script (add this at the top of your scripts)
+document.addEventListener('DOMContentLoaded', function() {
+    // Store references to modal trigger buttons
+    const navButton = document.querySelector('[onclick*="toggleNavPanel"]');
+    const resultsNavButton = document.querySelector('[onclick*="toggleResultsNavPanel"]');
+    const submitButton = document.querySelector('[onclick*="showSubmitModal"]');
+    
+    // Function to position modal near trigger button
+    function positionModal(modalId, triggerButton) {
+        const modal = document.getElementById(modalId);
+        if (!modal || !triggerButton) return;
+        
+        const buttonRect = triggerButton.getBoundingClientRect();
+        const modalContent = modal.querySelector('div:first-child');
+        
+        // Calculate position - centered horizontally, near button vertically
+        const topPosition = buttonRect.bottom + window.scrollY + 10;
+        
+        // Apply positioning
+        modalContent.style.position = 'absolute';
+        modalContent.style.top = `${topPosition}px`;
+        modalContent.style.left = '50%';
+        modalContent.style.transform = 'translateX(-50%)';
+    }
+
+    // Override existing toggle functions with positioning
+    const originalToggleNavPanel = window.toggleNavPanel;
+    window.toggleNavPanel = function() {
+        originalToggleNavPanel();
+        if (!document.getElementById('nav-panel').classList.contains('hidden')) {
+            positionModal('nav-panel', navButton);
+        }
+    };
+
+    const originalToggleResultsNavPanel = window.toggleResultsNavPanel;
+    window.toggleResultsNavPanel = function() {
+        originalToggleResultsNavPanel();
+        if (!document.getElementById('results-nav-panel').classList.contains('hidden')) {
+            positionModal('results-nav-panel', resultsNavButton);
+        }
+    };
+
+    const originalShowSubmitModal = window.showSubmitModal;
+    window.showSubmitModal = function() {
+        originalShowSubmitModal();
+        if (!document.getElementById('submit-modal').classList.contains('hidden')) {
+            positionModal('submit-modal', submitButton);
+        }
+    };
+
+    // Reposition on window resize
+    window.addEventListener('resize', function() {
+        if (!document.getElementById('nav-panel').classList.contains('hidden')) {
+            positionModal('nav-panel', navButton);
+        }
+        if (!document.getElementById('results-nav-panel').classList.contains('hidden')) {
+            positionModal('results-nav-panel', resultsNavButton);
+        }
+        if (!document.getElementById('submit-modal').classList.contains('hidden')) {
+            positionModal('submit-modal', submitButton);
+        }
+    });
+});
+  </script>
   <style>
   body {
     font-family: Arial, sans-serif;
