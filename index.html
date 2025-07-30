@@ -425,7 +425,6 @@
 &lt;/div&gt;
 &lt;div class=&quot;mt-6 flex space-x-4 button-group md:flex-row flex-col&quot;&gt;
 &lt;button class=&quot;bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition&quot; id=&quot;take-again&quot;&gt;Take Again&lt;/button&gt;
-&lt;button class=&quot;bg-[#2c5281] text-white px-6 py-2 rounded-lg hover:bg-[#2c5281] transition&quot; id=&quot;review-test&quot;&gt;Review Test&lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/section&gt;
@@ -611,7 +610,6 @@
                     localStorage.removeItem(`quiz_${quizId}`);
                     window.location.reload();
                 });
-                document.getElementById(&#x27;review-test&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; showResults(currentResultQuestion));
                 document.getElementById(&#x27;close-nav&#x27;).addEventListener(&#x27;click&#x27;, toggleNavPanel);
                 document.getElementById(&#x27;nav-filter&#x27;).addEventListener(&#x27;change&#x27;, updateNavPanel);
                 document.getElementById(&#x27;prev-result&#x27;).addEventListener(&#x27;click&#x27;, showPreviousResult);
